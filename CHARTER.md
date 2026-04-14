@@ -1,0 +1,15 @@
+# CHARTER — Murmur
+
+## Mission
+Knowledge Tensors for self-improving agents
+
+## Type
+vessel
+
+## Fleet Integration
+- Git-Agent Standard v2.0 compliant
+- I2I protocol compatible
+- Fleet monitoring ready
+
+## Status
+Active | TypeScript | 29KB
