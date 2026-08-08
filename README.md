@@ -45,6 +45,18 @@ pnpm build
 pnpm type-check
 ```
 
+## Testing
+
+```bash
+pnpm test          # run tests once
+pnpm test:watch    # watch mode
+```
+
+Tests use [Vitest](https://vitest.dev/) and cover:
+- `cn()` utility — Tailwind class merging, conditionals, conflict resolution
+- `ModuleRegistry` — module discovery, state tracking, resource updates, statistics
+- Filesystem integration — package scanning, hidden dir skipping, state preservation on rescan
+
 ## Tech Stack
 
 - Next.js 15
