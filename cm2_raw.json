@@ -1,0 +1,82 @@
+{
+ "GAMED|ByteDance/Seed-2.0-mini": {
+  "verdict": "partial",
+  "truth": "partial",
+  "raw": "VERDICT: partial\nONE-SENTENCE-REASON: The submitted answer noted that adding retries is the common obvious suggestion but failed to explain why retries are inappropriate here given the third-party service has no remaining error budget, did not state the correct first change to implement, and even incorrectly included retries as part of a valid solution."
+ },
+ "GAMED|Qwen/Qwen2.5-72B-Instruct": {
+  "verdict": "partial",
+  "truth": "partial",
+  "raw": "VERDICT: partial\nONE-SENTENCE-REASON: The answer provides a good overview of potential solutions but does not clearly state which change to make first and why that is not the obvious answer."
+ },
+ "GAMED|google/gemma-3-27b-it": {
+  "verdict": "partial",
+  "truth": "partial",
+  "raw": "VERDICT: partial\nONE-SENTENCE-REASON: While acknowledging good options, the answer doesn't identify the *first* change needed \u2013 investigating *why* the connection is being reset, as the third party's SLA doesn't negate a potential issue on *your* side causing the resets."
+ },
+ "GAMED|meta-llama/Llama-3.3-70B-Instruct-Turbo": {
+  "verdict": "wrong",
+  "truth": "partial",
+  "raw": "VERDICT: wrong\nONE-SENTENCE-REASON: The correct first change should be to verify the third-party service's status page or contact their support to confirm if they are experiencing issues, as their 99.9% SLA and no error budget left suggests the problem might be on their end."
+ },
+ "CONSENSUS|ByteDance/Seed-2.0-mini": {
+  "verdict": "wrong",
+  "truth": "partial",
+  "raw": "VERDICT: wrong\nONE-SENTENCE-REASON: The submitted answer incorrectly recommends adding retries as the first change, which is the obvious quick fix but will increase load on the third-party service that already has no remaining error budget, worsening the connection reset failures."
+ },
+ "CONSENSUS|Qwen/Qwen2.5-72B-Instruct": {
+  "verdict": "partial",
+  "truth": "partial",
+  "raw": "VERDICT: partial\nONE-SENTENCE-REASON: The answer suggests a good technical solution but does not explicitly address why changing the retry mechanism is not the obvious answer, which might be due to the potential for masking underlying issues or the need to investigate the third-party service's actual performance."
+ },
+ "CONSENSUS|google/gemma-3-27b-it": {
+  "verdict": "partial",
+  "truth": "partial",
+  "raw": "VERDICT: partial\nONE-SENTENCE-REASON: While retries are a good eventual solution, the prompt asks what to change *first* given the third party has no error budget left, implying the issue isn't on their end and retries mask a deeper problem needing immediate investigation."
+ },
+ "CONSENSUS|meta-llama/Llama-3.3-70B-Instruct-Turbo": {
+  "verdict": "partial",
+  "truth": "partial",
+  "raw": "VERDICT: partial\nONE-SENTENCE-REASON: The answer is partial because while adding exponential-backoff retries with jitter is a good approach, it doesn't directly address the potential root cause of the issue, such as investigating the third-party service's incident history or the job's configuration."
+ },
+ "SURPRISE|ByteDance/Seed-2.0-mini": {
+  "verdict": "correct",
+  "truth": "correct",
+  "raw": "VERDICT: correct\nONE-SENTENCE-REASON: The submitted answer correctly identifies that the six consecutive 03:00 connection reset failures stem from a scheduled third-party event rather than random network issues, and correctly states that not changing retry logic is the right first step because retries would mask the symptom rather than fix the root cause."
+ },
+ "SURPRISE|Qwen/Qwen2.5-72B-Instruct": {
+  "verdict": "correct",
+  "truth": "correct",
+  "raw": "VERDICT: correct\nONE-SENTENCE-REASON: The submitted answer correctly identifies the need to investigate the root cause of the scheduled resets before implementing a retry mechanism, which could mask the underlying issue."
+ },
+ "SURPRISE|google/gemma-3-27b-it": {
+  "verdict": "correct",
+  "truth": "correct",
+  "raw": "VERDICT: correct\nONE-SENTENCE-REASON: The answer correctly identifies the likely root cause as a scheduled event on the third-party side, rather than a transient network issue, and explains why adding retries is counterproductive."
+ },
+ "SURPRISE|meta-llama/Llama-3.3-70B-Instruct-Turbo": {
+  "verdict": "correct",
+  "truth": "correct",
+  "raw": "VERDICT: correct\nONE-SENTENCE-REASON: The answer correctly identifies that the consistent timing of the failures suggests a scheduled event rather than a network issue, and that adding retries would mask the symptom without addressing the underlying cause."
+ },
+ "WRONG|ByteDance/Seed-2.0-mini": {
+  "verdict": "wrong",
+  "truth": "wrong",
+  "raw": "VERDICT: wrong\nONE-SENTENCE-REASON: The submitted answer\u2019s proposed initial changes of increasing timeout and adding retries are the obvious but incorrect first step because the third-party service has no remaining error budget, so retries would generate additional failed requests that worsen the connection reset issue rather than resolve it."
+ },
+ "WRONG|Qwen/Qwen2.5-72B-Instruct": {
+  "verdict": "partial",
+  "truth": "wrong",
+  "raw": "VERDICT: partial\nONE-SENTENCE-REASON: While increasing the timeout and adding a retry mechanism can help, moving the job to the primary region is a more effective solution because it addresses the root cause of the connection resets, which are likely due to the lower bandwidth and higher latency in the secondary region."
+ },
+ "WRONG|google/gemma-3-27b-it": {
+  "verdict": "partial",
+  "truth": "wrong",
+  "raw": "VERDICT: partial\nONE-SENTENCE-REASON: While increasing timeouts and retries are reasonable mitigations, and region consideration is good, the *first* change should focus on investigating *why* the connection is being reset, as assuming it's a timeout or network issue without investigation is premature given the third-party's SLA and lack of error budget."
+ },
+ "WRONG|meta-llama/Llama-3.3-70B-Instruct-Turbo": {
+  "verdict": "wrong",
+  "truth": "wrong",
+  "raw": "VERDICT: wrong\nONE-SENTENCE-REASON: The first change should be to investigate and understand the root cause of the 'connection reset' errors rather than immediately applying potential fixes like increasing the timeout or changing the job's region."
+ }
+}
